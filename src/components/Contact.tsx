@@ -24,7 +24,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://formspree.io/f/xdkevvov', {
+      const response = await fetch('https://formspree.io/f/mvgraqbk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,21 +63,21 @@ const Contact = () => {
                 <div className="text-center">
                   <MapPin className="mx-auto mb-4 text-cyan-500" size={32} />
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">Address</h3>
-                  <p className="text-gray-600">Kitale, Eldoret</p>
+                  <p className="text-gray-600">changamwe, Mombasa</p>
                   <p className="text-gray-600">Kenya</p>
                 </div>
                 
                 <div className="text-center">
                   <Phone className="mx-auto mb-4 text-cyan-500" size={32} />
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">Phone</h3>
-                  <p className="text-gray-600">+254716608367</p>
-                  <p className="text-gray-600">+254762847737</p>
+                  <p className="text-gray-600">+254110665688</p>
+                  <p className="text-gray-600">+254768378553</p>
                 </div>
                 
                 <div className="text-center">
                   <Mail className="mx-auto mb-4 text-cyan-500" size={32} />
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">Email</h3>
-                  <p className="text-gray-600">isavameshack@gmail.com</p>
+                  <p className="text-gray-600">basil59mutuku@gmail.com</p>
                 </div>
               </div>
             </div>

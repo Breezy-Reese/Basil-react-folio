@@ -97,7 +97,7 @@ const Footer = () => {
             {/* Social Icons */}
             <div className="flex gap-4">
               <a 
-                href="https://wa.me/0716608367" 
+                href="https://wa.me/0768378553" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
@@ -105,7 +105,7 @@ const Footer = () => {
                 <MessageSquare size={24} />
               </a>
               <a 
-                href="https://www.facebook.com/Carson De Galyan" 
+                href="https://www.facebook.com/Breezy-Reese" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
@@ -113,23 +113,7 @@ const Footer = () => {
                 <Facebook size={24} />
               </a>
               <a 
-                href="https://www.twitter.com/Carson De Galyan" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
-              >
-                <Twitter size={24} />
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/Carson De Galyan" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
-              >
-                <Linkedin size={24} />
-              </a>
-              <a 
-                href="https://www.github.com/Carson-jpg" 
+                href="https://www.github.com/Breezy-Reese" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
@@ -142,7 +126,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
           <p className="text-gray-400">
-            © 2024 Meshack Isava. All rights reserved. Built with React & Tailwind CSS.
+            © 2024 Basil mutuku. All rights reserved. Built with React & Tailwind CSS.
           </p>
         </div>
       </div>

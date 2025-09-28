@@ -19,14 +19,14 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full blur-3xl opacity-30 animate-pulse"></div>
               <img
-                src="/carson-uploads/30b1427b-d4e1-43c8-9eae-598fe2f73425.png"
-                alt="Meshack Isava"
+                src="public/Basil-uploads/Timeless design.png"
+                alt="Basil mutuku"
                 className="relative w-80 h-80 object-cover rounded-full border-4 border-cyan-400 shadow-2xl"
               />
             </div>
           </div>
           <div className="lg:w-1/2 text-center lg:text-left">
-            <h6 className="text-cyan-400 text-xl mb-4 font-semibold">Meshack Isava</h6>
+            <h6 className="text-cyan-400 text-xl mb-4 font-semibold">Basil Mutuku</h6>
             <h1 className="text-white text-5xl lg:text-6xl font-bold leading-tight mb-6">
               I'm a Software<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600">
@@ -35,7 +35,7 @@ const Hero = () => {
               <br />& Mentor
             </h1>
             <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-2xl">
-              Based in Kitale Kenya. Web dev, instructor & mentor. I eat, sleep and breathe React. 
+              Based in changamwe Kenya. Web dev, instructor & mentor. I eat, sleep and breathe React. 
               Am a proclaimed self-taught fullstack Javascript developer with knowledge in Javascript, 
               ReactJs, NodeJs, DotNet, C#, Python, Java, MongoDB and MySQL.
             </p>

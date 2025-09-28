@@ -11,8 +11,8 @@ const About = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-2xl blur-2xl opacity-20"></div>
               <img
-                src="/carson-uploads/27994c70-9c9f-496b-90fc-805e2d16bb89.png"
-                alt="Meshack Isava"
+                src="public/Basil-uploads/Timeless design.png"
+                alt="Basil mutuku"
                 className="relative w-96 h-96 object-cover rounded-2xl shadow-2xl"
               />
             </div>
@@ -21,9 +21,9 @@ const About = () => {
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
               About <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600">Me</span>
             </h1>
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">Hello! I'm Meshack Isava.</h3>
+            <h3 className="text-xl font-semibold text-gray-700 mb-4">Hello! I'm Basil mutuku.</h3>
             <p className="text-gray-600 leading-relaxed mb-8 text-lg">
-              Hi there! I am Meshack! You might also know me as Javascript Developer. I've been programming 
+              Hi there! I am Basil! You might also know me as Javascript Developer. I've been programming 
               for over 2 years now as a Full Stack developer. I've worked both with startups and individuals 
               to help build & scale their businesses. Along the journey I realised my passion existed in 
               helping others excel and pursue their dreams as upcoming developers. Hence mentoring and teaching how to code.

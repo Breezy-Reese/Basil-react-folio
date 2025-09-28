@@ -42,7 +42,7 @@ const Header = () => {
                 Services
               </button>
               <a 
-                href="https://blog-carson.vercel.app/" 
+                href="https://blog-Basil.vercel.app/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-white hover:text-cyan-400 transition-colors duration-200 uppercase"
@@ -95,7 +95,7 @@ const Header = () => {
                 Services
               </button>
               <a 
-                href="https://blog-carson.vercel.app/" 
+                href="https://blog-Basil.vercel.app/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block px-3 py-2 text-white hover:text-cyan-400 transition-colors duration-200"
