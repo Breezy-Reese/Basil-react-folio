@@ -11,7 +11,7 @@ const About = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-2xl blur-2xl opacity-20"></div>
               <img
-                src="public/Basil-uploads/Timeless design.png"
+                src="public/Basil-uploads/WhatsApp Image 2026-08-19 at 11.20.56 AM.jpeg"
                 alt="Basil mutuku"
                 className="relative w-96 h-96 object-cover rounded-2xl shadow-2xl"
               />

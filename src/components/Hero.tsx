@@ -19,7 +19,7 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full blur-3xl opacity-30 animate-pulse"></div>
               <img
-                src="public/Basil-uploads/Timeless design.png"
+                src="public/Basil-uploads/WhatsApp Image 2026-08-19 at 11.20.56 AM.jpeg"
                 alt="Basil mutuku"
                 className="relative w-80 h-80 object-cover rounded-full border-4 border-cyan-400 shadow-2xl"
               />

@@ -20,7 +20,7 @@ const Header = () => {
         <nav className="flex items-center justify-between py-4">
           <div className="flex items-center space-x-8">
             <div className="text-cyan-400 text-xl font-bold">
-              <Link to="/">MI</Link>
+              <Link to="/">BM</Link>
             </div>
             <div className="hidden md:flex space-x-6">
               <button 
