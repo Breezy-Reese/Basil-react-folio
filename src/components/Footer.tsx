@@ -1,133 +1,186 @@
-
-import React, { useState } from 'react';
-import { MessageSquare, Facebook, Twitter, Linkedin, Github } from 'lucide-react';
-import { toast } from '@/hooks/use-toast';
+import React from 'react';
+import {
+  ArrowUp,
+  Facebook,
+  Github,
+  Linkedin,
+  Mail,
+} from 'lucide-react';
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      toast({
-        title: "Subscribed successfully!",
-        description: "Thank you for subscribing to our newsletter.",
-      });
-      setEmail('');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Info Section */}
+    <footer className="bg-[#080B0F] text-gray-300 border-t border-[#1E242C]">
+      <div className="container mx-auto px-4 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          
+          {/* Brand */}
           <div>
-            <h4 className="text-cyan-400 text-lg font-bold mb-4 border-b-2 border-cyan-400 pb-2">
-              Info
-            </h4>
-            <ul className="space-y-3">
-              <li><a href="#about" className="hover:text-cyan-400 transition-colors duration-200">About Us</a></li>
-              <li><a href="#services" className="hover:text-cyan-400 transition-colors duration-200">Services</a></li>
-              <li><a href="#skills" className="hover:text-cyan-400 transition-colors duration-200">Skills</a></li>
-              <li><a href="#contact" className="hover:text-cyan-400 transition-colors duration-200">Contact</a></li>
-            </ul>
+            <h3
+              className="text-xl font-bold mb-4"
+              style={{
+                color: '#F5A623',
+                fontFamily: "'JetBrains Mono', monospace",
+              }}
+            >
+              basil<span style={{ color: '#2DD4BF' }}>.</span>dev
+            </h3>
+
+            <p className="text-gray-400 leading-relaxed text-sm max-w-xs">
+              Software developer focused on building practical web
+              applications, APIs, and database-driven solutions.
+            </p>
           </div>
 
-          {/* Explore Section */}
+          {/* Quick Links */}
           <div>
-            <h4 className="text-cyan-400 text-lg font-bold mb-4 border-b-2 border-cyan-400 pb-2">
-              Explore
+            <h4 className="text-white font-semibold mb-5">
+              Quick Links
             </h4>
+
             <ul className="space-y-3">
               <li>
-                <a 
-                  href="https://melbite.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-cyan-400 transition-colors duration-200"
+                <button
+                  onClick={() => scrollToSection('hero')}
+                  className="text-gray-400 hover:text-cyan-400 transition-colors text-sm"
                 >
-                  My Blog
+                  Home
+                </button>
+              </li>
+
+              <li>
+                <button
+                  onClick={() => scrollToSection('about')}
+                  className="text-gray-400 hover:text-cyan-400 transition-colors text-sm"
+                >
+                  About
+                </button>
+              </li>
+
+              <li>
+                <button
+                  onClick={() => scrollToSection('projects')}
+                  className="text-gray-400 hover:text-cyan-400 transition-colors text-sm"
+                >
+                  Projects
+                </button>
+              </li>
+
+              <li>
+                <button
+                  onClick={() => scrollToSection('services')}
+                  className="text-gray-400 hover:text-cyan-400 transition-colors text-sm"
+                >
+                  Services
+                </button>
+              </li>
+
+              <li>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="text-gray-400 hover:text-cyan-400 transition-colors text-sm"
+                >
+                  Contact
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Professional Links */}
+          <div>
+            <h4 className="text-white font-semibold mb-5">
+              Connect
+            </h4>
+
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="https://github.com/Breezy-Reese"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                >
+                  <Github size={17} />
+                  GitHub
                 </a>
               </li>
-              <li><a href="#" className="hover:text-cyan-400 transition-colors duration-200">Latest Projects</a></li>
-              <li><a href="#" className="hover:text-cyan-400 transition-colors duration-200">Technologies</a></li>
-              <li><a href="#" className="hover:text-cyan-400 transition-colors duration-200">Portfolio</a></li>
+
+              <li>
+                <a
+                  href="https://www.facebook.com/Breezy-Reese"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                >
+                  <Facebook size={17} />
+                  Facebook
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="mailto:basil59mutuku@gmail.com"
+                  className="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors text-sm"
+                >
+                  <Mail size={17} />
+                  Email
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://blog-Basil.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-cyan-400 transition-colors text-sm"
+                >
+                  Developer Blog
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Legal Section */}
+          {/* Contact CTA */}
           <div>
-            <h4 className="text-cyan-400 text-lg font-bold mb-4 border-b-2 border-cyan-400 pb-2">
-              Legal
+            <h4 className="text-white font-semibold mb-5">
+              Let's Work Together
             </h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="hover:text-cyan-400 transition-colors duration-200">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-cyan-400 transition-colors duration-200">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-cyan-400 transition-colors duration-200">Security</a></li>
-              <li><a href="#" className="hover:text-cyan-400 transition-colors duration-200">Testimonials</a></li>
-            </ul>
-          </div>
 
-          {/* Newsletter Section */}
-          <div>
-            <h4 className="text-cyan-400 text-lg font-bold mb-4 border-b-2 border-cyan-400 pb-2">
-              Newsletter
-            </h4>
-            <p className="text-gray-400 mb-4 leading-relaxed">
-              Subscribe to our newsletter for a weekly dose of news, updates, helpful tips, and exclusive offers.
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">
+              Have a project, opportunity, or technical question? Feel free
+              to get in touch.
             </p>
-            <form onSubmit={handleNewsletterSubmit} className="space-y-3 mb-6">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full px-3 py-2 bg-gray-800 border border-cyan-400 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-              />
-              <button
-                type="submit"
-                className="w-full bg-cyan-400 text-gray-900 px-6 py-2 rounded-lg font-bold hover:bg-cyan-300 transition-colors duration-200"
-              >
-                SUBSCRIBE
-              </button>
-            </form>
-            
-            {/* Social Icons */}
-            <div className="flex gap-4">
-              <a 
-                href="https://wa.me/0768378553" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
-              >
-                <MessageSquare size={24} />
-              </a>
-              <a 
-                href="https://www.facebook.com/Breezy-Reese" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
-              >
-                <Facebook size={24} />
-              </a>
-              <a 
-                href="https://www.github.com/Breezy-Reese" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 transform hover:scale-110"
-              >
-                <Github size={24} />
-              </a>
-            </div>
+
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-cyan-400 to-purple-600 text-white text-sm font-semibold hover:from-cyan-500 hover:to-purple-700 transition-all"
+            >
+              Contact Me
+              <Mail size={16} />
+            </button>
           </div>
         </div>
-        
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-          <p className="text-gray-400">
-            © 2024 Basil mutuku. All rights reserved. Built with React & Tailwind CSS.
+
+        {/* Bottom */}
+        <div className="border-t border-[#1E242C] mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-gray-500 text-sm text-center sm:text-left">
+            © {new Date().getFullYear()} Basil Mutuku. All rights reserved.
           </p>
+
+          <button
+            onClick={() => scrollToSection('hero')}
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors text-sm"
+          >
+            Back to top
+            <ArrowUp size={16} />
+          </button>
         </div>
       </div>
     </footer>

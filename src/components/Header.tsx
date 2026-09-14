@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -24,79 +24,59 @@ const Header = () => {
 
   return (
     <header
-      className="fixed w-full top-0 z-50 border-b"
+      className="fixed top-0 left-0 w-full z-50 border-b backdrop-blur-md"
       style={{
-        backgroundColor: '#0B0F14',
+        backgroundColor: 'rgba(11, 15, 20, 0.92)',
         borderColor: '#1E242C',
       }}
     >
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between py-4">
-          {/* Logo + Desktop Navigation */}
-          <div className="flex items-center space-x-10">
+          
+          {/* Logo */}
+          <div className="flex items-center">
             <Link
               to="/"
-              className="text-lg font-bold"
+              className="text-xl font-bold tracking-tight"
               style={{
                 color: '#F5A623',
                 fontFamily: "'JetBrains Mono', monospace",
               }}
             >
-              basil<span style={{ color: '#2DD4BF' }}>.</span>dev
+              basil
+              <span style={{ color: '#2DD4BF' }}>.</span>
+              dev
             </Link>
-
-            <div className="hidden md:flex space-x-8">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="text-sm font-medium transition-colors duration-150"
-                  style={{
-                    color: '#8B949E',
-                    fontFamily: "'Inter', sans-serif",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#F6F5F2';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = '#8B949E';
-                  }}
-                >
-                  {link.label}
-                </button>
-              ))}
-
-              {/* Blog */}
-              <a
-                href="https://blog-Basil.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium transition-colors duration-150"
-                style={{
-                  color: '#8B949E',
-                  fontFamily: "'Inter', sans-serif",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#F6F5F2';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#8B949E';
-                }}
-              >
-                Blog
-              </a>
-            </div>
           </div>
 
-          {/* Desktop Contact */}
-          <div className="hidden md:block">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200"
+              >
+                {link.label}
+              </button>
+            ))}
+
+            <a
+              href="https://blog-Basil.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200"
+            >
+              Blog
+              <ArrowUpRight size={14} />
+            </a>
+
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-5 py-2 rounded-md text-sm font-medium transition-opacity duration-150 hover:opacity-90"
+              className="px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 hover:opacity-90"
               style={{
                 backgroundColor: '#F5A623',
                 color: '#0B0F14',
-                fontFamily: "'Inter', sans-serif",
               }}
             >
               Contact
@@ -104,22 +84,21 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              style={{ color: '#F6F5F2' }}
-              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-white p-2 rounded-lg hover:bg-[#12161C] transition-colors"
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </nav>
 
-        {/* Mobile Menu */}
+        {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden pb-4">
             <div
-              className="px-2 pt-2 pb-3 space-y-1 rounded-lg mt-2 border"
+              className="p-3 rounded-xl border space-y-1"
               style={{
                 backgroundColor: '#12161C',
                 borderColor: '#1E242C',
@@ -129,38 +108,29 @@ const Header = () => {
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="block w-full text-left px-3 py-2 text-sm font-medium transition-colors duration-150"
-                  style={{
-                    color: '#8B949E',
-                    fontFamily: "'Inter', sans-serif",
-                  }}
+                  className="block w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#1A2028] transition-colors"
                 >
                   {link.label}
                 </button>
               ))}
 
-              {/* Mobile Blog */}
               <a
                 href="https://blog-Basil.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block px-3 py-2 text-sm font-medium"
-                style={{
-                  color: '#8B949E',
-                  fontFamily: "'Inter', sans-serif",
-                }}
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center justify-between px-4 py-3 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-[#1A2028] transition-colors"
               >
-                Blog
+                <span>Blog</span>
+                <ArrowUpRight size={15} />
               </a>
 
-              {/* Mobile Contact */}
               <button
                 onClick={() => scrollToSection('contact')}
-                className="block w-full text-left px-3 py-2 rounded-md font-medium mt-1"
+                className="block w-full text-left px-4 py-3 rounded-lg font-semibold mt-2"
                 style={{
                   backgroundColor: '#F5A623',
                   color: '#0B0F14',
-                  fontFamily: "'Inter', sans-serif",
                 }}
               >
                 Contact
@@ -174,4 +144,3 @@ const Header = () => {
 };
 
 export default Header;
-

@@ -7,17 +7,19 @@ import Services from '../components/Services';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
-
+import Projects from '@/components/Projects';
 const Index = () => {
   return (
     <div className="min-h-screen bg-gray-900">
       <Header />
       <Hero />
       <About />
+      <Projects />
       <Services />
       <Skills />
       <Contact />
       <Footer />
+    
     </div>
   );
 };
