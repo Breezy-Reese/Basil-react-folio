@@ -1,312 +1,241 @@
-import React from 'react';
-import {
-  ExternalLink,
-  Github,
-  ArrowUpRight,
-  Code2,
-  Database,
-  Globe,
-} from 'lucide-react';
+import React, { useState } from "react";
+import { ArrowUpRight, Github, Code2, Database, Globe } from "lucide-react";
 
-const Projects = () => {
-  const projects = [
-    {
-      title: 'PropertyPro',
-      category: 'Property Management',
-      description:
-        'A full-stack property and rental management platform for managing properties, units, tenants, leases, payments, maintenance, and expenses.',
-      technologies: ['React', 'PHP', 'Node.js', 'MongoDB'],
-      icon: Database,
-      featured: true,
-    },
-    {
-      title: 'Hotel Management System',
-      category: 'Hospitality Platform',
-      description:
-        'A modern hotel management platform designed to handle rooms, reservations, guests, restaurant services, orders, and customer bookings.',
-      technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
-      icon: Globe,
-      featured: true,
-    },
-    {
-      title: 'AgriSmart',
-      category: 'Agriculture Technology',
-      description:
-        'An agriculture management platform connecting agricultural products, orders, and digital services through a modern web application.',
-      technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
-      icon: Code2,
-      featured: false,
-    },
-    {
-      title: 'School Management System',
-      category: 'Education Technology',
-      description:
-        'A school management platform designed to bring administration, teachers, students, parents, attendance, results, fees, and academic information together.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Chart.js'],
-      icon: Globe,
-      featured: false,
-    },
-    {
-      title: 'SmartRoad',
-      category: 'Emergency Response',
-      description:
-        'A digital platform designed to support emergency response coordination between drivers, hospitals, responders, and administrators.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'REST API'],
-      icon: Code2,
-      featured: false,
-    },
-    {
-      title: 'JobConnect',
-      category: 'Employment Platform',
-      description:
-        'A job connection platform designed to help users discover opportunities and connect with potential employers through a simple digital experience.',
-      technologies: ['JavaScript', 'React', 'Node.js', 'MongoDB'],
-      icon: Globe,
-      featured: false,
-    },
-  ];
+// Screenshots go in: public/Basil-uploads/
+// Use .jpg, .jpeg, .png or .webp - the extension is detected automatically.
+// If no screenshot file is found, a styled placeholder is shown instead.
+const projects = [
+  {
+    title: "PropertyPro",
+    category: "Property Management",
+    description:
+      "A property and rental management system designed to help property managers organize properties, tenants, leases, payments, and maintenance requests from one dashboard.",
+    technologies: ["PHP", "Node.js", "MongoDB", "Tailwind CSS"],
+    icon: <Database size={28} strokeWidth={1.5} />,
+    image: "/Basil-uploads/propertypro",
+    gradient: "from-cyan-500/30 via-[#111820] to-blue-600/30",
+    link: "https://github.com/Breezy-Reese/Rental-system",
+    github: "",
+  },
+  {
+    title: "Hotel Management System",
+    category: "Hospitality Management",
+    description:
+      "A hotel management application for handling reservations, rooms, guests, staff operations, and other essential hotel activities through a centralized platform.",
+    technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    icon: <Globe size={28} strokeWidth={1.5} />,
+    image: "/Basil-uploads/hotel-system",
+    gradient: "from-violet-500/30 via-[#111820] to-fuchsia-600/30",
+    link: "https://github.com/Breezy-Reese/Hotel-ssystem",
+    github: "",
+  },
+  {
+    title: "AgriSmart",
+    category: "Agriculture Technology",
+    description:
+      "An agriculture-focused platform that supports farmers with digital tools for managing farming activities and accessing useful agricultural information.",
+    technologies: ["React", "Express.js", "MongoDB", "JavaScript"],
+    icon: <Code2 size={28} strokeWidth={1.5} />,
+    image: "/Basil-uploads/agrismart",
+    gradient: "from-emerald-500/30 via-[#111820] to-cyan-600/30",
+    link: "https://github.com/Breezy-Reese/Agrismart-system",
+    github: "",
+  },
+  {
+    title: "SmartRoad",
+    category: "Smart Transportation",
+    description:
+      "A technology project focused on improving access to road-related information and supporting smarter transportation management.",
+    technologies: ["React", "JavaScript", "Node.js", "Tailwind CSS"],
+    icon: <Globe size={28} strokeWidth={1.5} />,
+    image: "/Basil-uploads/smartroad",
+    gradient: "from-amber-500/30 via-[#111820] to-orange-600/30",
+    link: "https://github.com/Breezy-Reese/smartroad",
+    github: "",
+  },
+];
 
+type Project = (typeof projects)[number];
+
+const IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "webp"];
+
+const ProjectImage = ({ project }: { project: Project }) => {
+  const [attempt, setAttempt] = useState(0);
+  const [failed, setFailed] = useState(false);
+
+  return (
+    <a
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`View ${project.title}`}
+      className="group/image relative block overflow-hidden border-b border-white/10 bg-[#0B0F14]"
+    >
+      {/* Browser window bar */}
+      <div className="flex items-center gap-2 border-b border-white/10 bg-[#0E1218] px-3 py-2">
+        <span className="h-2 w-2 rounded-full bg-red-400/70" />
+        <span className="h-2 w-2 rounded-full bg-yellow-400/70" />
+        <span className="h-2 w-2 rounded-full bg-green-400/70" />
+        <span className="ml-2 truncate rounded-md bg-white/5 px-2.5 py-0.5 text-[10px] text-slate-500">
+          {project.title.toLowerCase().replace(/\s+/g, "-")}.app
+        </span>
+      </div>
+
+      {/* Screenshot or placeholder */}
+      <div className="relative aspect-[16/9] overflow-hidden">
+        {!failed ? (
+          <img
+            src={`${project.image}.${IMAGE_EXTENSIONS[attempt]}`}
+            alt={`${project.title} preview`}
+            loading="lazy"
+            onError={() => {
+              if (attempt < IMAGE_EXTENSIONS.length - 1) {
+                setAttempt(attempt + 1);
+              } else {
+                setFailed(true);
+              }
+            }}
+            className="h-full w-full object-cover object-top transition duration-700 group-hover/image:scale-105"
+          />
+        ) : (
+          <div
+            className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${project.gradient}`}
+          >
+            <div
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
+                backgroundSize: "32px 32px",
+              }}
+            />
+            <div className="relative flex h-14 w-14 items-center justify-center rounded-xl border border-white/15 bg-[#0B0F14]/80 text-cyan-300 shadow-xl transition duration-500 group-hover/image:scale-110">
+              {project.icon}
+            </div>
+          </div>
+        )}
+
+        {/* Hover overlay */}
+        <div className="absolute inset-0 flex items-center justify-center bg-[#0B0F14]/70 opacity-0 backdrop-blur-[2px] transition duration-300 group-hover/image:opacity-100">
+          <span className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-4 py-2 text-sm font-semibold text-[#0B0F14] shadow-lg shadow-cyan-500/20">
+            View Project
+            <ArrowUpRight size={18} />
+          </span>
+        </div>
+      </div>
+    </a>
+  );
+};
+
+const Projects: React.FC = () => {
   return (
     <section
       id="projects"
-      className="relative py-24 overflow-hidden"
-      style={{ backgroundColor: '#0B0F14' }}
+      className="relative overflow-hidden bg-[#0B0F14] px-6 pb-8 pt-16 text-white sm:px-10 lg:px-16"
     >
-      {/* Background glow */}
-      <div
-        className="absolute top-40 left-0 w-80 h-80 rounded-full blur-3xl opacity-10"
-        style={{ backgroundColor: '#22D3EE' }}
-      />
+      <div className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-cyan-500/5 blur-3xl" />
+      <div className="pointer-events-none absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-violet-500/5 blur-3xl" />
 
-      <div
-        className="absolute bottom-20 right-0 w-80 h-80 rounded-full blur-3xl opacity-10"
-        style={{ backgroundColor: '#8B5CF6' }}
-      />
+      <div className="relative mx-auto max-w-7xl">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2 text-sm font-medium text-cyan-300">
+            <Code2 size={16} />
+            What I've built
+          </span>
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <p
-            className="text-sm font-semibold tracking-[0.2em] uppercase mb-3"
-            style={{ color: '#22D3EE' }}
-          >
-            My Work
-          </p>
-
-          <h2
-            className="text-4xl md:text-5xl font-bold leading-tight mb-6"
-            style={{
-              color: '#F6F5F2',
-              fontFamily: "'Inter', sans-serif",
-            }}
-          >
-            Projects I've
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-              built and worked on.
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            Featured{" "}
+            <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+              Projects
             </span>
           </h2>
 
-          <p
-            className="text-lg leading-relaxed"
-            style={{
-              color: '#8B949E',
-              fontFamily: "'Inter', sans-serif",
-            }}
-          >
-            A selection of software projects focused on solving practical
-            problems through modern web technologies, clean interfaces, and
-            reliable backend systems.
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">
+            A selection of projects that demonstrate my experience building
+            practical web applications, working with databases, and solving
+            real-world problems through technology. Click any preview to open
+            the project.
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => {
-            const Icon = project.icon;
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {projects.map((project, index) => (
+            <article
+              key={project.title}
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#111820] transition duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-xl hover:shadow-cyan-950/20"
+            >
+              <ProjectImage project={project} />
 
-            return (
-              <article
-                key={project.title}
-                className={`group relative flex flex-col rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-2 ${
-                  project.featured ? 'lg:col-span-1' : ''
-                }`}
-                style={{
-                  backgroundColor: '#12161C',
-                  borderColor: '#1E242C',
-                }}
-              >
-                {/* Project Visual */}
-                <div
-                  className="relative h-52 flex items-center justify-center overflow-hidden"
-                  style={{
-                    background:
-                      'linear-gradient(135deg, #111827 0%, #172033 50%, #1A1630 100%)',
-                  }}
-                >
-                  {/* Decorative grid */}
-                  <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      backgroundImage:
-                        'linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)',
-                      backgroundSize: '32px 32px',
-                    }}
-                  />
-
-                  {/* Glow */}
-                  <div
-                    className="absolute w-32 h-32 rounded-full blur-3xl opacity-30"
-                    style={{ backgroundColor: '#22D3EE' }}
-                  />
-
-                  {/* Icon */}
-                  <div
-                    className="relative w-20 h-20 rounded-2xl flex items-center justify-center border transition-transform duration-300 group-hover:scale-110"
-                    style={{
-                      backgroundColor: '#12161C',
-                      borderColor: '#2DD4BF',
-                      color: '#22D3EE',
-                    }}
-                  >
-                    <Icon size={36} strokeWidth={1.5} />
-                  </div>
-
-                  {/* Featured label */}
-                  {project.featured && (
-                    <span
-                      className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold"
-                      style={{
-                        backgroundColor: '#F5A623',
-                        color: '#0B0F14',
-                      }}
-                    >
-                      Featured
-                    </span>
-                  )}
-
-                  {/* Arrow */}
-                  <div
-                    className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
-                    style={{
-                      backgroundColor: '#1E242C',
-                      color: '#F6F5F2',
-                    }}
-                  >
-                    <ArrowUpRight size={18} />
-                  </div>
-                </div>
-
-                {/* Project Content */}
-                <div className="flex flex-col flex-1 p-6">
-                  <p
-                    className="text-xs font-semibold uppercase tracking-wider mb-2"
-                    style={{ color: '#22D3EE' }}
-                  >
+              <div className="flex flex-1 flex-col p-5">
+                <div className="mb-2 flex items-center justify-between">
+                  <p className="text-sm font-medium text-cyan-300">
                     {project.category}
                   </p>
+                  <span className="rounded-full border border-white/10 px-2.5 py-0.5 text-[11px] font-medium text-slate-400">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
 
-                  <h3
-                    className="text-2xl font-bold mb-3"
-                    style={{ color: '#F6F5F2' }}
+                <h3 className="mb-2 text-lg font-semibold text-white transition-colors group-hover:text-cyan-300">
+                  {project.title}
+                </h3>
+
+                <p className="flex-grow line-clamp-3 text-sm leading-6 text-slate-400">
+                  {project.description}
+                </p>
+
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {project.technologies.map((technology) => (
+                    <span
+                      key={technology}
+                      className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] text-slate-300 transition-colors group-hover:border-cyan-400/20"
+                    >
+                      {technology}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-white/10 pt-4">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg bg-cyan-400 px-4 py-2 text-sm font-semibold text-[#0B0F14] transition hover:bg-cyan-300"
                   >
-                    {project.title}
-                  </h3>
+                    View Project
+                    <ArrowUpRight size={17} />
+                  </a>
 
-                  <p
-                    className="text-sm leading-relaxed mb-6 flex-1"
-                    style={{ color: '#8B949E' }}
-                  >
-                    {project.description}
-                  </p>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((technology) => (
-                      <span
-                        key={technology}
-                        className="px-2.5 py-1 rounded-md text-xs border"
-                        style={{
-                          color: '#A8B1BC',
-                          backgroundColor: '#0B0F14',
-                          borderColor: '#1E242C',
-                        }}
-                      >
-                        {technology}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Project Links */}
-                  <div
-                    className="flex items-center gap-3 pt-5 border-t"
-                    style={{ borderColor: '#1E242C' }}
-                  >
+                  {project.github && (
                     <a
-                      href="#"
-                      className="flex items-center gap-2 text-sm font-medium transition-colors duration-200"
-                      style={{ color: '#F6F5F2' }}
-                      onClick={(e) => e.preventDefault()}
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`GitHub repository for ${project.title}`}
+                      className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm font-medium text-slate-300 transition hover:border-cyan-400/40 hover:bg-cyan-400/5 hover:text-cyan-300"
                     >
                       <Github size={17} />
-                      GitHub
+                      Code
                     </a>
-
-                    <a
-                      href="#"
-                      className="flex items-center gap-2 text-sm font-medium transition-colors duration-200"
-                      style={{ color: '#22D3EE' }}
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <ExternalLink size={17} />
-                      Live Demo
-                    </a>
-                  </div>
+                  )}
                 </div>
-              </article>
-            );
-          })}
+              </div>
+            </article>
+          ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div
-          className="mt-16 rounded-2xl border p-8 md:p-10 text-center"
-          style={{
-            backgroundColor: '#12161C',
-            borderColor: '#1E242C',
-          }}
-        >
-          <h3
-            className="text-2xl md:text-3xl font-bold mb-3"
-            style={{ color: '#F6F5F2' }}
-          >
-            Have a project in mind?
-          </h3>
-
-          <p
-            className="max-w-2xl mx-auto mb-6"
-            style={{ color: '#8B949E' }}
-          >
-            I'm always interested in building useful products and working on
-            challenging software projects.
+        <div className="mt-10 text-center">
+          <p className="mb-5 text-slate-400">
+            Have a project in mind or want to work together?
           </p>
 
-          <button
-            onClick={() => {
-              const element = document.getElementById('contact');
-
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:-translate-y-0.5"
-            style={{
-              backgroundColor: '#F5A623',
-              color: '#0B0F14',
-            }}
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 px-6 py-3 font-semibold text-cyan-300 transition hover:border-cyan-300 hover:bg-cyan-400/10"
           >
-            Let's Work Together
+            Let's Connect
             <ArrowUpRight size={18} />
-          </button>
+          </a>
         </div>
       </div>
     </section>

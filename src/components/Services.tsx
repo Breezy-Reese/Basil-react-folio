@@ -99,9 +99,10 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="relative py-24 overflow-hidden"
+      className="relative pb-16 pt-10 overflow-hidden"
       style={{ backgroundColor: '#0B0F14' }}
     >
+      {/* Background glow, matching Projects/About */}
       <div
         className="absolute top-20 right-0 w-80 h-80 rounded-full blur-3xl opacity-10"
         style={{ backgroundColor: '#8B5CF6' }}
@@ -112,7 +113,8 @@ const Services = () => {
       />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-10 max-w-2xl mx-auto">
           <p
             className="text-sm font-semibold tracking-[0.2em] uppercase mb-3"
             style={{ color: '#22D3EE' }}
@@ -133,6 +135,7 @@ const Services = () => {
           </p>
         </div>
 
+        {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const IconComponent = service.icon;
@@ -146,6 +149,7 @@ const Services = () => {
                   borderColor: '#1E242C',
                 }}
               >
+                {/* Icon */}
                 <div
                   className="w-14 h-14 rounded-xl flex items-center justify-center border mb-6 transition-colors duration-300 group-hover:border-cyan-400/50"
                   style={{
@@ -160,6 +164,7 @@ const Services = () => {
                   />
                 </div>
 
+                {/* Content */}
                 <h3
                   className="text-xl font-bold mb-3"
                   style={{ color: '#F6F5F2' }}
@@ -174,6 +179,7 @@ const Services = () => {
                   {service.description}
                 </p>
 
+                {/* Skills */}
                 <div className="flex flex-wrap gap-2">
                   {service.skills.map((skill, skillIndex) => (
                     <span

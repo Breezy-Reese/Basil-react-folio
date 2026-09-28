@@ -99,3 +99,20 @@
     @apply bg-background text-foreground;
   }
 }
+/* Tighter, consistent spacing between page sections */
+section[id]:not(#hero) {
+  padding-top: 2.5rem !important;
+  padding-bottom: 2.5rem !important;
+}
+
+@media (min-width: 1024px) {
+  section[id]:not(#hero) {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+/* Footer */
+footer {
+  margin-top: 0;
+}
