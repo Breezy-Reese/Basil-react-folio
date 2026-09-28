@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUpRight, Download, Github, Mail } from 'lucide-react';
-import Scene3D from './Scene3D';
+import SkillCards3D from './SkillCards3D';
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -125,12 +125,7 @@ const Hero = () => {
                   Drag to rotate
                 </p>
               </div>
-              <div
-                className="rounded-2xl border overflow-hidden"
-                style={{ backgroundColor: '#0E1218', borderColor: '#1E242C' }}
-              >
-                <Scene3D skills={technologies} />
-              </div>
+              <SkillCards3D />
             </div>
           </div>
         </div>
