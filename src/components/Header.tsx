@@ -67,15 +67,10 @@ const Header = () => {
           </button>
         );
       })}
-      <a
-        href="https://blog-Basil.vercel.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={linkClass}
-      >
-        <BookOpen size={18} />
-        Blog
-      </a>
+      <Link to="/blog" className={linkClass} onClick={() => setIsMenuOpen(false)}>
+  <BookOpen size={18} />
+  Blog
+</Link>
     </>
   );
 
