@@ -85,7 +85,7 @@ const Hero = () => {
               </button>
 
               <a
-                href="/Basil-uploads/Basil-Mutuku-CV.pdf"
+                href="public/Basil-uploads/Basil_Mutuku cv - .pdf"
                 download
                 className="inline-flex items-center justify-center gap-2 border border-[#2A323D] text-gray-200 px-7 py-3.5 rounded-lg font-semibold hover:border-cyan-400 hover:text-cyan-400 transition-all duration-200"
               >
